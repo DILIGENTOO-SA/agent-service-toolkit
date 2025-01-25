@@ -355,5 +355,9 @@ async def handle_feedback() -> None:
         st.toast("Feedback recorded", icon=":material/reviews:")
 
 
+from core import settings
+import uvicorn
+
 if __name__ == "__main__":
+    uvicorn.run("service:app", host=settings.HOST, port=settings.PORT, reload=settings.is_dev())
     asyncio.run(main())
